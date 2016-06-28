@@ -22,7 +22,7 @@ You need to have your `PayReadConf` file available. Replace that file with the p
 
 You can switch between the `test` and `live` environment in the payment method interface through the `Payment Modules` section in VirtueMart. 
 
-**NOTICE** Remember to turn of the test environment before you go in production mode.
+**NOTICE** Remember to turn off the test environment before you go in production mode.
 
 ## Support
 
