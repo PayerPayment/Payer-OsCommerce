@@ -7,22 +7,25 @@ For more information about our payment services, please visit [www.payer.se](htt
 ## Requirements
 
   * [OsCommerce](https://www.oscommerce.com): Version 2.3.4
-  * [Payer Configuration](https://payer.se) - Missing the configuration file? Contact the [Customer Service](mailto:kundtjanst@payer.se).
+  * [Payer Credentials](https://payer.se) - Missing credentials? Contact the [Customer Service](mailto:kundtjanst@payer.se).
 
 ## Installation
 
   1. Copy the files from the `catalog` directory into the corresponding folder in your OsCommerce installation.
-  2. In the `Modules` section in OsCommerce, choose `Payment` to list the payment methods available and click `Install`.
+  2. Configure your Payer Credentials. See the `Configuration` section below for more details.
+  3. In the `Modules` section in OsCommerce, choose `Payment` to list the payment methods available and click `Install`.
 
 ## Configuration
 
-You need to have your `PayReadConf` file available. Replace that file with the placeholder in the `catalog/includes/modules/payment/pr_api` folder.
+Each module has to be configured correctly with your unique Payer Credentials before it can be used in production. The credentials corresponds to the following parameters:
 
-## Environment
+  * `AGENT ID`
+  * `KEY 1`
+  * `KEY 2`
 
-You can switch between the `test` and `live` environment in the payment method interface through the `Payment Modules` section in VirtueMart. 
+The key values can be found under the `Settings/Account` section in [Payer Administration](https://secure.payer.se/adminweb/inloggning/inloggning.php).
 
-**NOTICE** Remember to turn off the test environment before you go in production mode.
+Setup the module by replacing the placeholders in the `PayReadConf.php` file with these values. The configuration file can be found in the `includes/modules/payment/pr_api` folder in the root of the directory. And that's it!
 
 ## Support
 
