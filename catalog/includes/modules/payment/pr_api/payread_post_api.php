@@ -213,7 +213,7 @@ class payread_post_api {
 	 * 	<input type="hidden" name="payer_xml_writer" value="get_api_version()">
 	 * 	<input type="hidden" name="payer_data" value="get_xml_data()">
 	 * 	<input type="hidden" name="payer_checksum" value="get_checksum()">
-	 * @return  nothing
+	 * @return  void
 	 */
 	function generate_form() {
 		echo $this->generate_form_str();
@@ -290,7 +290,7 @@ class payread_post_api {
 	/**
 	 * This method will set which currency the transaction is in. Use 3 letters in uppercase.
 	 * @param string $theCurrency 3 letter uppercase currency (ie "SEK") (required)
-	 * @return  nothing
+	 * @return  void
 	 */
 	function set_currency($theCurrency) {
 		if (strlen($theCurrency) < 4) {
@@ -306,7 +306,7 @@ class payread_post_api {
 	 * this description may be truncated depending on where it is presented, the maximum length
 	 * that will be stored by Payer is 255 characters, but try to keep it below 32
 	 * characters
-	 * @return  nothing
+	 * @return  void
 	 */
 	function set_description($theDescription) {
 		$this->myDescription = $theDescription;
@@ -319,7 +319,7 @@ class payread_post_api {
 	 * This method will set a reference Id for the purchase.
 	 * @param string $theReferenceId is the reference Id. It is possible that this
 	 * string might be presented to the buyer.
-	 * @return  nothing
+	 * @return  void
 	 */
 	function set_reference_id($theReferenceId) {
 		$this->myReferenceId = $theReferenceId;
@@ -328,7 +328,7 @@ class payread_post_api {
 	 * This method will set a message for the purchase.
 	 * @param string $theMessage is the message. It is possible that this
 	 * string might be presented to the buyer and the merchant.
-	 * @return  nothing
+	 * @return  void
 	 */
 	function set_message($theMessage) {
 		$this->myMessage = $theMessage;
@@ -336,7 +336,7 @@ class payread_post_api {
 	/**
 	 * This method is not yet used
 	 * @access private
-	 * @return  nothing
+	 * @return  void
 	 */
 	function add_catalog_purchase($theLineNumber, $theId, $theQuantity) {
 		$this->myCatalogPurchases[] = array("LineNo" => $theLineNumber, "Id" => $theId, "Quantity" => $theQuantity);
@@ -351,7 +351,7 @@ class payread_post_api {
 	 * @param int $thePrice price of the product buyed. (required)
 	 * @param int $theVat vat of the product purchased. [25, 12, 6 or 0] (required)
 	 * @param int $theQuantity quantity of the product buyed. (required)
-	 * @return  nothing
+	 * @return  void
 	 */
 	function add_freeform_purchase($theLineNumber, $theDescription, $thePrice, $theVat, $theQuantity) {
 		$this->myFreeformPurchases[] = array("LineNo" => $theLineNumber, "Description" => $theDescription, "Price" => $thePrice, "Vat" => $theVat, "Quantity" => $theQuantity);
@@ -370,7 +370,7 @@ class payread_post_api {
 	 * @param string $theUnit purchase unit "kg", "L", "st", "each", "m" or similar 
 	 * @param string $theAccount the account number for accounting - will need special reports
 	 * @param string $theDistAgentId - if using distributed purchase - state AgentID of subcontract
-	 * @return  nothing
+	 * @return  void
 	 */
 	function add_freeform_purchase_ex($theLineNumber, $theDescription, $theItemNumber, $thePrice, $theVat, $theQuantity, $theUnit=null, $theAccount=null, $theDistAgentId=null) {
 		$theArray = array();
@@ -430,7 +430,7 @@ class payread_post_api {
 	 * @param string $theItemNumber The ItemNumber that will show up in the item number column
 	 * @param string $theVat The VAT percentage used to add VAT from the net price (25 std Seden)
 	 * @param string $theQuantity The Quantity added - normally and default "1"
-	 * @return  nothing
+	 * @return  void
 	 */
 	function set_fee($theDescription, $thePrice, $theItemNumber="", $theVat=25, $theQuantity=1) {
 		$this->add_freeform_purchase_ex(99999, $theDescription, $theItemNumber, $thePrice, $theVat, $theQuantity, $theUnit=null, $theAccount=null, $theDistAgentId=null);
@@ -443,7 +443,7 @@ class payread_post_api {
 	 * This method will add additional information static text that the buyer will see when he goes to PAYER website. Use this method multiple times per each information line.
 	 * @param string $theLineNumber which product you want additional information for. (required)
 	 * @param string $theText the additional decription of the product buyed. (required)
-	 * @return  nothing
+	 * @return  void
 	 */
 	function add_info_line($theLineNumber, $theText) {
 		$this->myInfoLines[] = array("LineNo" => $theLineNumber, "Text" => $theText);
@@ -469,7 +469,7 @@ class payread_post_api {
 	 * @param string $theCustomerId UserId at Payer (optional)
 	 * @param string $theYourReference Contact person at organisation/company (optional)
 	 * @param string $theOptions key1=value1,key2=value2 comma separated key->value pairs for special purposes (optional)
-	 * @return  nothing
+	 * @return  void
 	 */
 	function add_buyer_info($theFirstName, $theLastName, $theAddressLine1, $theAddressLine2, $thePostalcode, $theCity, $theCountryCode, $thePhoneHome, $thePhoneWork, $thePhoneMobile, $theEmail, $theOrganisation=null, $theOrgNr=null, $theCustomerId=null, $theYourReference=null, $theOptions=null) {
 		$this->myBuyerInfo["FirstName"]    = $theFirstName;
@@ -498,7 +498,7 @@ class payread_post_api {
 	 *
 	 * This method will set the payment method the buyer can use to pay with.
 	 * @param string $theMethod Can be set to sms, card, bank, phone, invoice & auto (required)
-	 * @return  nothing
+	 * @return  void
 	 */
 	function add_payment_method($theMethod) {
 		$this->myPaymentMethods[] = $theMethod;
@@ -509,7 +509,7 @@ class payread_post_api {
 	*
 	* If you want the recipt to be handled by your shop, this method will set the URL where the buyer will be redirected. If you don't use this method the buyer will get a recipt on PAYER server.
 	* @param string $theUrl URL to your recipt if handled by shop.	(optional)
-	* @return  nothing
+	* @return  void
 	*/
 	function set_success_redirect_url($theUrl) {
 		$this->mySuccessRedirectUrl = $theUrl;
@@ -521,7 +521,7 @@ class payread_post_api {
 	 * This method will set the URL where your Authorize webpage is located, remember that you will need to respond "TRUE" if everything is ok, or "FALSE" if something goes wrong, on your page.
 	 * If "options" is set to "store=true" then this URL will be used to send back the uniqReferenceId
 	 * @param string $theUrl URL to your authorize notification page. (required)
-	 * @return  nothing
+	 * @return  void
 	 */
 	function set_authorize_notification_url($theUrl) {
 		$this->myAuthorizeNotificationUrl = $theUrl;
@@ -532,7 +532,7 @@ class payread_post_api {
 	 *
 	 * This method will set the URL where your Settle webpage is located, remember that you will need to respond "TRUE" if everything is ok, or "FALSE" if something goes wrong, on your page.
 	 * @param string $theUrl URL to your settle notification page. (required)
-	 * @return  nothing
+	 * @return  void
 	 */
 	function set_settle_notification_url($theUrl) {
 		$this->mySettleNotificationUrl = $theUrl;
@@ -543,7 +543,7 @@ class payread_post_api {
 	 *
 	 * This method will set the URL where your frontpage of the shop is located.
 	 * @param string $theUrl URL to your frontpage of the shop. (required)
-	 * @return  nothing
+	 * @return  void
 	 */
 	function set_redirect_back_to_shop_url($theUrl) {
 		$this->myRedirectBackToShopUrl = $theUrl;
@@ -554,7 +554,7 @@ class payread_post_api {
 	 *
 	 * This method will set the debug mode, if set to verbose you will be able to see the parameters posted at the page where you enter bankcard information
 	 * @param string $theDebugMode debug mode, set as "silent"/"brief"/"verbose" (required)
-	 * @return  nothing
+	 * @return  void
 	 */
 	function set_debug_mode($theDebugMode) {
 		if (in_array(strtolower($theDebugMode), array("silent","brief","verbose"))) {
@@ -567,7 +567,7 @@ class payread_post_api {
 	 *
 	 * This method will set the testmode, if set to true, PAYER will not contact the bank and no money will be taken from the bank account connected to the bankcard, otherwise everything will act like a real transaction.
 	 * @param boolean $theDebugMode test mode, set as true/false (required)
-	 * @return  nothing
+	 * @return  void
 	 */
 	function set_test_mode($theTestMode) {
 		$lc = strtolower($theTestMode);
@@ -579,7 +579,7 @@ class payread_post_api {
 	 *
 	 * This method will set which language the buyer will see when he enters bankcard information. The input should be in lowercase and you should enter language code (2 letters) not countrycode ie "sv" not "se".
 	 * @param string $theLanguageCode 2 letter uppercase language (ie "sv") (required)
-	 * @return  nothing
+	 * @return  void
 	 */
 	function set_language($theLanguage) {
 		if (strlen($theLanguage)==2) {
