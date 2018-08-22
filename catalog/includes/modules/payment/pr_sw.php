@@ -73,7 +73,7 @@ class pr_sw {
 
 	function selection() {
 		return array('id' => $this->code,
-			'module' => '<img src="/images/payer/p_bank.png" width="121" height="41" />');
+			'module' => '<img src="/images/payer/p_swish.png" width="121" height="41" />');
 	}
 
 	function pre_confirmation_check() {
