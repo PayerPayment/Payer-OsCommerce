@@ -27,7 +27,7 @@ class pr_sw {
 		$this->sort_order = MODULE_PAYMENT_PR_SW_SORT_ORDER;
 		$this->enabled = ((MODULE_PAYMENT_PR_SW_STATUS == 'True') ? true : false);
 		$this->name = "Swish";
-		$this->type = "swish";
+		$this->type = "SWISH";
 
 		if ((int) MODULE_PAYMENT_PR_SW_ORDER_STATUS_ID > 0) {
 			$this->order_status = MODULE_PAYMENT_PR_SW_NEW_ORDER_STATUS_ID;
