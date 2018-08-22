@@ -26,8 +26,8 @@ class pr_sw {
 		$this->description = MODULE_PAYMENT_PR_SW_TEXT_DESCRIPTION;
 		$this->sort_order = MODULE_PAYMENT_PR_SW_SORT_ORDER;
 		$this->enabled = ((MODULE_PAYMENT_PR_SW_STATUS == 'True') ? true : false);
-		$this->name = "Direct Bank";
-		$this->type = "BANK";
+		$this->name = "Swish";
+		$this->type = "swish";
 
 		if ((int) MODULE_PAYMENT_PR_SW_ORDER_STATUS_ID > 0) {
 			$this->order_status = MODULE_PAYMENT_PR_SW_NEW_ORDER_STATUS_ID;
